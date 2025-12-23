@@ -23,7 +23,6 @@ Transform 10,000 raw cafe transaction records into production-ready data through
 ##  Data Quality Issues Found
 - 969 records missing item (9.7%)
 - 460 records missing dates (4.6%)
-- 2,912 records with incomplete numeric data (29.1%)
 - Inconsistent formatting (mixed case, error codes)
 - Multiple date formats requiring normalization
 
@@ -34,7 +33,7 @@ Transform 10,000 raw cafe transaction records into production-ready data through
 - Staging table with NVARCHAR columns to preserve all raw values
 - Multi-step CTE pipeline for transformation and validation
 - Calculations using fixed item prices (`total = quantity × price`)
-- Comprehensive audit flags
+- Audit flags
 - Two-table output: `transactions` (clean) + `rejected_transactions` (errors)
 
 **See detailed implementation and comments in SQL files.**
