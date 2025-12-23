@@ -222,3 +222,9 @@ SELECT
   total_calculated
 FROM final
 WHERE critical_errors = 0;
+
+/* Inspect the tables */
+
+SELECT * FROM transactions;  --   Result: 8564 rows 
+
+SELECT * FROM rejected_transactions;  --   Result: 1436 rows 
