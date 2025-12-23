@@ -11,7 +11,7 @@ Transform 10,000 raw cafe transaction records into production-ready data through
 ## Dataset
 **Source**: [Cafe Sales Dirty Data - Kaggle](https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training)
 
-##  Results at a Glance
+##  Results Summary
 | Metric | Value |
 |--------|-------|
 | Raw Records Processed | 10,000 |
