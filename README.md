@@ -21,8 +21,12 @@ Transform 10,000 raw cafe transaction records into production-ready data through
 
 
 ##  Data Quality Issues Found
-- 969 records missing item (9.7%)
-- 460 records missing dates (4.6%)
+- 969 records missing item
+- 460 records missing dates
+- 533 records missing price
+- 479 records missing quantity
+- 3969 records missing location
+- 3178 records missing payment method
 - Inconsistent formatting (mixed case, error codes)
 - Multiple date formats requiring normalization
 
