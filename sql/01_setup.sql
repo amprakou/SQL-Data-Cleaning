@@ -105,9 +105,10 @@ After that, proceed executing :
 */
 
                         SELECT COUNT(*) FROM raw_transactions  --(10.000 rows expected)
+                          
    /* to verify how much rows were inserted and if their number matches the rows of the initially downloaded CSV. */
-   -- Optionally, you could execute :
+   -- Optionally, you could execute the following statement to inspect your dataset : 
+                          
                         SELECT TOP(200) * FROM raw_transactions 
-   -- to inspect your dataset.
-
+   
 
