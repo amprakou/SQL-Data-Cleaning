@@ -100,7 +100,10 @@ path and pasting it to FROM clause in BULK INSERT statement, as shown below :
                             ROWTERMINATOR = '\n'
                             );
 
-/* After that, proceed executing : */
+/* 
+After that, proceed executing : 
+*/
+
                         SELECT COUNT(*) FROM raw_transactions  --(10.000 rows expected)
    /* to verify how much rows were inserted and if their number matches the rows of the initially downloaded CSV. */
    -- Optionally, you could execute :
