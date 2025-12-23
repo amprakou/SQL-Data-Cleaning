@@ -79,8 +79,8 @@ SQL Server service account must have READ access to CSV file path, otherwise dat
 Execute : 
 */
                             SELECT
-                                servicename,
-                                service_account
+                            servicename,
+                            service_account
                             FROM sys.dm_server_services;  
 
 /*
@@ -101,13 +101,12 @@ path and pasting it to FROM clause in BULK INSERT statement, as shown below :
                             );
 
 /* 
-After that, proceed executing : 
+After that, proceed executing the following statement  to verify the number of rows inserted and if their number matches the rows of the initially downloaded CSV : 
 */
 
                         SELECT COUNT(*) FROM raw_transactions  --(10.000 rows expected)
                           
-   /* to verify how much rows were inserted and if their number matches the rows of the initially downloaded CSV. */
-   -- Optionally, you could execute the following statement to inspect your dataset : 
+-- Optionally, you could execute the following statement to inspect your dataset : 
                           
                         SELECT TOP(200) * FROM raw_transactions 
    
