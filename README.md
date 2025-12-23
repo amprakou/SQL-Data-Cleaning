@@ -8,6 +8,9 @@ Transform 10,000 raw cafe transaction records into production-ready data through
 - Comprehensive data quality tracking
 - Separation of clean vs rejected records
 
+## Dataset
+**Source**: [Cafe Sales Dirty Data - Kaggle](https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training)
+
 ##  Results at a Glance
 | Metric | Value |
 |--------|-------|
