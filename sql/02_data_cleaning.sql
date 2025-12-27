@@ -3,8 +3,30 @@
                     DATA QUALITY CHECKS:
 
    Verified no NULL transaction_ids exist in raw data:  */
-   SELECT COUNT(*) FROM raw_transactions WHERE transaction_id IS NULL
---   Result: 0 rows 
+   SELECT COUNT(*) FROM raw_transactions WHERE transaction_id IS NULL ;
+                        --   Result: 0 rows 
+
+/*
+   Verified that both quantity, price, and total do not contain negative values 
+*/
+   SELECT COUNT(*) as negative_values
+   FROM raw_transactions
+   WHERE TRY_CAST(quantity AS INT) < 0 
+   OR TRY_CAST(unit_price AS DECIMAL(10,2)) < 0
+   OR TRY_CAST(total_spent AS DECIMAL(10,2)) < 0;
+                        --    Result: 0 rows
+
+/*
+   Verified no duplicate transaction_id exist 
+
+*/
+   SELECT transaction_id, COUNT(*) as duplicate_count
+   FROM raw_transactions
+   GROUP BY transaction_id
+   HAVING COUNT(*) > 1;
+                        -- Result: 0 rows
+
+
 
 /*                   TYPE CONVERSIONS AND DATE PARSING:
 
@@ -53,7 +75,8 @@ CASE
 END AS location,
     
 CASE 
-      WHEN dt.trn_date_parsed > CAST(GETDATE() AS DATE) THEN NULL -- ensure transaction wasn't made in future
+      WHEN dt.trn_date_parsed > CAST(GETDATE() AS DATE) THEN NULL -- Reject transactions with dates in the future (data entry errors)
+      WHEN dt.trn_date_parsed < '2023-01-01' THEN NULL -- Reject transactions before 2023-01-01 (outside dataset's range)
       ELSE dt.trn_date_parsed 
 END as trn_date
     
@@ -156,10 +179,10 @@ final AS (
 
 INSERT INTO rejected_transactions (
   transaction_id,
-   item, 
-   quantity, 
-   unit_price, 
-   total,
+  item, 
+  quantity, 
+  unit_price, 
+  total,
   payment_method, 
   location, 
   trn_date,
